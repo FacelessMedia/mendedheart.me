@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/events", label: "Events" },
   { href: "/past-events", label: "Past Events" },
   { href: "/about", label: "About" },
+  { href: "/partners/destiny-rescue", label: "Destiny Rescue" },
   { href: "/contact", label: "Contact" },
 ];
 

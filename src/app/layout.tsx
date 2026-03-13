@@ -3,6 +3,10 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AnnouncementBar } from "@/components/announcement-bar";
+import { ScrollToTop } from "@/components/scroll-to-top";
+import { FloatingTicket } from "@/components/floating-ticket";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -35,9 +39,72 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
+        <AnnouncementBar />
         <Header />
         <main>{children}</main>
         <Footer />
+        <ScrollToTop />
+        <FloatingTicket />
+        <Script
+          id="json-ld-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Mended Heart Ministry",
+              url: "https://www.mendedheart.me",
+              description: "Christian music ministry in Maine sharing the love of Jesus Christ through concerts and festivals.",
+              email: "mended.heart@me.com",
+              telephone: "+1-207-691-9128",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "98 Cushing Rd",
+                addressLocality: "Cushing",
+                addressRegion: "ME",
+                postalCode: "04563",
+                addressCountry: "US",
+              },
+              sameAs: ["https://facebook.com/MendedHeartMinistry"],
+            }),
+          }}
+        />
+        <Script
+          id="json-ld-event"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MusicEvent",
+              name: "Mended Heart Festival 2026",
+              startDate: "2026-06-27T11:00:00-04:00",
+              endDate: "2026-06-27T23:00:00-04:00",
+              location: {
+                "@type": "Place",
+                name: "Pittston Fairgrounds",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "995 East Pittston Rd",
+                  addressLocality: "Pittston",
+                  addressRegion: "ME",
+                  postalCode: "04345",
+                },
+              },
+              offers: {
+                "@type": "Offer",
+                price: "30",
+                priceCurrency: "USD",
+                url: "http://www.itickets.com/events/483747.html",
+                availability: "https://schema.org/InStock",
+              },
+              organizer: {
+                "@type": "Organization",
+                name: "Mended Heart Ministry",
+                url: "https://www.mendedheart.me",
+              },
+            }),
+          }}
+        />
       </body>
     </html>
   );

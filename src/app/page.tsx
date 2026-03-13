@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, MapPin, Calendar, Ticket, Music, ArrowRight, Quote, Users, Mic2, Church } from "lucide-react";
+import { Heart, MapPin, Calendar, Ticket, Music, ArrowRight, Quote, Users, Mic2, Church, Tent, Utensils, Baby, Sun, Shield, ExternalLink, BookOpen } from "lucide-react";
 import { FadeIn, StaggerChildren, StaggerItem, FloatingHearts, CountdownTimer, GlowCard, AnimatedCounter, SlideIn } from "@/components/motion";
 
 const artists = [
@@ -186,8 +186,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why Attend */}
+      <section className="bg-muted/30 py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeIn className="text-center">
+            <span className="text-sm font-semibold uppercase tracking-wider text-primary">
+              June 27, 2026
+            </span>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+              Why <span className="text-gradient">Attend</span>?
+            </h2>
+          </FadeIn>
+          <StaggerChildren className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6" staggerDelay={0.07}>
+            {[
+              { icon: Music, title: "Live Worship", desc: "All-day Christian music" },
+              { icon: Users, title: "Community", desc: "Churches united as one" },
+              { icon: Tent, title: "Camping", desc: "On-site overnight stays" },
+              { icon: Utensils, title: "Great Food", desc: "Food trucks & vendors" },
+              { icon: Baby, title: "Family Fun", desc: "Activities for all ages" },
+              { icon: Sun, title: "Free Sunday", desc: "Worship service included" },
+            ].map((item) => (
+              <StaggerItem key={item.title}>
+                <div className="flex flex-col items-center rounded-2xl bg-white p-5 text-center shadow-md ring-1 ring-black/[0.03] transition-shadow hover:shadow-lg">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
+                    <item.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="mt-3 text-sm font-bold">{item.title}</h3>
+                  <p className="mt-1 text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
+        </div>
+      </section>
+
       {/* Artist Lineup */}
-      <section className="overflow-hidden bg-muted/30 py-20 mesh-gradient">
+      <section className="overflow-hidden bg-white py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center">
             <span className="text-sm font-semibold uppercase tracking-wider text-primary">
@@ -322,6 +356,48 @@ export default function Home() {
               </StaggerItem>
             ))}
           </StaggerChildren>
+        </div>
+      </section>
+
+      {/* Bible Verse */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <FadeIn>
+            <BookOpen className="mx-auto h-6 w-6 text-primary/40" />
+            <blockquote className="mt-4 text-lg font-medium italic leading-relaxed text-muted-foreground sm:text-xl">
+              &ldquo;He heals the brokenhearted and binds up their wounds.&rdquo;
+            </blockquote>
+            <p className="mt-3 text-sm font-bold text-primary">— Psalm 147:3</p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Partner Logos */}
+      <section className="border-y bg-muted/20 py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeIn className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">
+              Partners & Sponsors
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+              <Link href="/partners/destiny-rescue" className="group flex flex-col items-center gap-1.5 transition-opacity hover:opacity-80">
+                <Shield className="h-8 w-8 text-muted-foreground/40 transition-colors group-hover:text-red-600" />
+                <span className="text-xs font-semibold text-muted-foreground/60">Destiny Rescue</span>
+              </Link>
+              <a href="http://www.itickets.com/events/483747.html" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-1.5 transition-opacity hover:opacity-80">
+                <Ticket className="h-8 w-8 text-muted-foreground/40 transition-colors group-hover:text-primary" />
+                <span className="text-xs font-semibold text-muted-foreground/60">iTickets</span>
+              </a>
+              <a href="https://www.paypal.com/paypalme/MichaelPoor" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-1.5 transition-opacity hover:opacity-80">
+                <Heart className="h-8 w-8 text-muted-foreground/40 transition-colors group-hover:text-primary" />
+                <span className="text-xs font-semibold text-muted-foreground/60">PayPal Giving</span>
+              </a>
+              <a href="https://facebook.com/MendedHeartMinistry" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-1.5 transition-opacity hover:opacity-80">
+                <Users className="h-8 w-8 text-muted-foreground/40 transition-colors group-hover:text-blue-600" />
+                <span className="text-xs font-semibold text-muted-foreground/60">Facebook</span>
+              </a>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
