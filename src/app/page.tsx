@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Heart, MapPin, Calendar, Ticket, Music, ArrowRight, Quote, Users, Mic2, Church, Tent, Utensils, Baby, Sun, Shield, ExternalLink, BookOpen } from "lucide-react";
 import { FadeIn, StaggerChildren, StaggerItem, FloatingHearts, CountdownTimer, GlowCard, AnimatedCounter, SlideIn } from "@/components/motion";
+import { SongCards } from "@/components/song-cards";
 
 const artists = [
   { name: "Sean Rodriguez", image: "/images/artists/festival-poster.jpg" },
@@ -122,6 +123,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Featured Music */}
+      <SongCards />
 
       {/* Festival Spotlight */}
       <section className="bg-white py-16 sm:py-20">

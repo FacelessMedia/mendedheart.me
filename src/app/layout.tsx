@@ -6,6 +6,8 @@ import { Footer } from "@/components/footer";
 import { AnnouncementBar } from "@/components/announcement-bar";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { FloatingTicket } from "@/components/floating-ticket";
+import { MusicProvider } from "@/components/music-context";
+import { MusicPlayer } from "@/components/music-player";
 import Script from "next/script";
 
 const inter = Inter({
@@ -39,12 +41,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
+        <MusicProvider>
         <AnnouncementBar />
         <Header />
-        <main>{children}</main>
+        <main className="pb-[72px]">{children}</main>
         <Footer />
         <ScrollToTop />
         <FloatingTicket />
+        <MusicPlayer />
         <Script
           id="json-ld-org"
           type="application/ld+json"
@@ -105,6 +109,7 @@ export default function RootLayout({
             }),
           }}
         />
+        </MusicProvider>
       </body>
     </html>
   );

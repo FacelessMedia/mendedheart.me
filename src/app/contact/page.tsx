@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Facebook, Send, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Send, CheckCircle, Clock } from "lucide-react";
+import { ClickToCopy } from "@/components/click-to-copy";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -144,12 +145,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold">Email</p>
-                      <a
-                        href="mailto:mended.heart@me.com"
-                        className="text-sm text-muted-foreground hover:text-primary"
-                      >
-                        mended.heart@me.com
-                      </a>
+                      <ClickToCopy text="mended.heart@me.com" label="email" />
                     </div>
                   </CardContent>
                 </Card>
@@ -161,12 +157,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold">Phone</p>
-                      <a
-                        href="tel:+12076919128"
-                        className="text-sm text-muted-foreground hover:text-primary"
-                      >
-                        (207) 691-9128
-                      </a>
+                      <ClickToCopy text="(207) 691-9128" label="phone" />
                     </div>
                   </CardContent>
                 </Card>
@@ -200,6 +191,17 @@ export default function ContactPage() {
                       >
                         MendedHeartMinistry
                       </a>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card className="border-0 shadow-md">
+                  <CardContent className="flex items-start gap-4 p-5">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <Clock className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold">Office Hours</p>
+                      <p className="text-sm text-muted-foreground">Mon–Fri 9:00 AM – 5:00 PM EST</p>
                     </div>
                   </CardContent>
                 </Card>
