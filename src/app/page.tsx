@@ -4,11 +4,14 @@ import { Heart, MapPin, Calendar, Ticket, Music, ArrowRight, Quote, Users, Mic2,
 import { FadeIn, StaggerChildren, StaggerItem, FloatingHearts, CountdownTimer, GlowCard, AnimatedCounter, SlideIn } from "@/components/motion";
 
 const artists = [
-  { name: "LVRDR", image: "/images/artists/lvrdr.jpg" },
-  { name: "Hailey Chalifour", image: "/images/artists/hailey-chalifour.jpg" },
+  { name: "Sean Rodriguez", image: "/images/artists/festival-poster.jpg" },
+  { name: "Behold The Beloved", image: "/images/artists/behold-the-beloved.jpeg" },
   { name: "Devin Williams", image: "/images/artists/devin-williams.jpeg" },
-  { name: "Galen Porter Music", image: "/images/artists/galen-porter.jpg" },
-  { name: "Chasing the Light", image: "/images/artists/chasing-the-light.jpg" },
+  { name: "Hailey Chalifour", image: "/images/artists/hailey-chalifour.jpg" },
+  { name: "Adam Verdi", image: "/images/artists/festival-poster.jpg" },
+  { name: "Galen Porter", image: "/images/artists/galen-porter.jpg" },
+  { name: "Matthew Jones", image: "/images/artists/festival-poster.jpg" },
+  { name: "Chasing The Light", image: "/images/artists/festival-poster.jpg" },
 ];
 
 const testimonials = [
@@ -198,7 +201,7 @@ export default function Home() {
             </p>
           </FadeIn>
 
-          <StaggerChildren className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5" staggerDelay={0.08}>
+          <StaggerChildren className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4" staggerDelay={0.08}>
             {artists.map((artist) => (
               <StaggerItem key={artist.name}>
                 <GlowCard>

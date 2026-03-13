@@ -125,7 +125,7 @@ export default function EventsPage() {
                         </CardHeader>
                         <CardContent>
                           <ul className="space-y-3">
-                            {["Adam Verdi", "LVRDR", "Hailey Chalifour", "Devin Williams", "Galen Porter Music", "Chasing the Light"].map((artist) => (
+                            {["Sean Rodriguez", "Behold The Beloved", "Devin Williams", "Hailey Chalifour", "Adam Verdi", "Galen Porter", "Matthew Jones", "Chasing The Light"].map((artist) => (
                               <li key={artist} className="flex items-center gap-2">
                                 <Music className="h-4 w-4 text-primary" />
                                 <span className="text-sm font-medium">{artist}</span>
