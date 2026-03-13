@@ -1,25 +1,42 @@
-import { Metadata } from "next";
 import { Calendar, MapPin, Ticket, Clock, Heart, Music, Tent, Utensils, Star } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AddToCalendarButton, ShareButtons } from "@/components/event-actions";
+import { FadeIn, StaggerChildren, StaggerItem } from "@/components/motion";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Events — Mended Heart Ministry",
   description: "Upcoming Christian music events and the Mended Heart Festival 2026 in Pittston, Maine.",
 };
+
+const schedule = [
+  { time: "9:00 AM", event: "Gates Open", desc: "Arrive early, set up camping, explore the grounds" },
+  { time: "11:00 AM", event: "Festival Begins", desc: "Opening worship and welcome" },
+  { time: "12:00 PM", event: "Galen Porter", desc: "Live performance" },
+  { time: "1:00 PM", event: "Hailey Chalifour", desc: "Live performance" },
+  { time: "2:00 PM", event: "Adam Verdi", desc: "Live performance" },
+  { time: "3:00 PM", event: "Matthew Jones", desc: "Live performance" },
+  { time: "4:30 PM", event: "Chasing The Light", desc: "Live performance" },
+  { time: "5:30 PM", event: "Dinner Break", desc: "Food trucks & fellowship" },
+  { time: "6:30 PM", event: "Behold The Beloved", desc: "Live performance" },
+  { time: "7:30 PM", event: "Devin Williams", desc: "Live performance" },
+  { time: "9:00 PM", event: "Sean Rodriguez", desc: "Headliner performance" },
+  { time: "11:00 PM", event: "Festival Ends", desc: "Camping continues overnight" },
+];
 
 export default function EventsPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="bg-gradient-to-br from-primary/95 via-primary to-primary/80 py-16 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#7f1d1d] via-primary to-[#991b1b] py-16 text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.1),transparent_60%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeIn className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Events</h1>
             <p className="mt-3 text-lg text-white/80">
               Join us for powerful worship and fellowship
             </p>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -38,15 +55,21 @@ export default function EventsPage() {
                     Mended Heart Festival 2026
                   </h2>
                 </div>
-                <a
-                  href="http://www.itickets.com/events/483747.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow transition-colors hover:bg-primary/90"
-                >
-                  <Ticket className="h-4 w-4" />
-                  Buy Tickets — $30
-                </a>
+                <div className="flex flex-wrap items-center gap-2">
+                  <a
+                    href="http://www.itickets.com/events/483747.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow transition-colors hover:bg-primary/90"
+                  >
+                    <Ticket className="h-4 w-4" />
+                    Buy Tickets — $30
+                  </a>
+                  <AddToCalendarButton />
+                </div>
+              </div>
+              <div className="mt-4">
+                <ShareButtons />
               </div>
             </div>
 
@@ -224,8 +247,42 @@ export default function EventsPage() {
         </div>
       </section>
 
+      {/* Festival Schedule Timeline */}
+      <section className="bg-muted/30 py-16 mesh-gradient">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <FadeIn className="text-center">
+            <span className="text-sm font-semibold uppercase tracking-wider text-primary">
+              Saturday, June 27
+            </span>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
+              Festival Schedule
+            </h2>
+          </FadeIn>
+
+          <div className="relative mt-10">
+            <div className="absolute left-[18px] top-0 bottom-0 w-0.5 bg-primary/20 sm:left-[22px]" />
+            <StaggerChildren className="space-y-0" staggerDelay={0.05}>
+              {schedule.map((item, i) => (
+                <StaggerItem key={i}>
+                  <div className="relative flex items-start gap-4 py-3 pl-10 sm:pl-12">
+                    <div className="absolute left-2 top-4 h-3 w-3 rounded-full border-2 border-primary bg-white sm:left-3" />
+                    <div className="min-w-[70px] shrink-0">
+                      <span className="text-xs font-bold text-primary sm:text-sm">{item.time}</span>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold">{item.event}</p>
+                      <p className="text-xs text-muted-foreground">{item.desc}</p>
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerChildren>
+          </div>
+        </div>
+      </section>
+
       {/* Sunday Service */}
-      <section className="bg-muted/50 py-16">
+      <section className="bg-white py-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <Heart className="mx-auto h-8 w-8 text-primary" />
           <h2 className="mt-4 text-2xl font-bold tracking-tight sm:text-3xl">

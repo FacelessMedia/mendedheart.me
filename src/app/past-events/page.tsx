@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { Camera } from "lucide-react";
+import { FadeIn } from "@/components/motion";
+import { LightboxGallery } from "@/components/lightbox";
 
 export const metadata: Metadata = {
   title: "Past Events — Mended Heart Ministry",
@@ -97,31 +99,22 @@ export default function PastEventsPage() {
       {/* General Gallery */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3">
-            <Camera className="h-6 w-6 text-primary" />
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-              Pictures of Success
-            </h2>
-          </div>
-          <p className="mt-2 text-muted-foreground">
-            Highlights from our concerts, outreach events, and community gatherings
-          </p>
-          <div className="mt-8 columns-2 gap-3 sm:columns-3 lg:columns-4">
-            {generalGallery.map((photo, i) => (
-              <div
-                key={i}
-                className="group relative mb-3 break-inside-avoid overflow-hidden rounded-lg shadow-md"
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={400}
-                  height={300}
-                  className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20" />
-              </div>
-            ))}
+          <FadeIn>
+            <div className="flex items-center gap-3">
+              <Camera className="h-6 w-6 text-primary" />
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                Pictures of Success
+              </h2>
+              <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
+                {generalGallery.length} photos
+              </span>
+            </div>
+            <p className="mt-2 text-muted-foreground">
+              Highlights from our concerts, outreach events, and community gatherings. Click any photo to view full size.
+            </p>
+          </FadeIn>
+          <div className="mt-8">
+            <LightboxGallery images={generalGallery} />
           </div>
         </div>
       </section>
